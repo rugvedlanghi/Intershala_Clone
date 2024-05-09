@@ -1,75 +1,32 @@
-import React, { useState } from "react";
-import "./home.css";
-import first from "../../Assets/Firstslide.png";
-import second from "../../Assets/secondslide.webp";
-import third from "../../Assets/thirdsilde.webp";
-import fourth from "../../Assets/fourthslide.webp";
-import InternShipData from "../Data/InternshipData";
-import Job from "./Job";
+import React from 'react'
+import { useState } from 'react';
+import JobData from '../Data/JobData'
 
-const Home = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+const Job = () => {
+
+    const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState("Big Brands");
 
-  const filterInternShips = InternShipData.filter((item)=>
-    !selectedCategory || item.category === selectedCategory 
-  )
+    const handleJob = (direction) => {
+        const container = document.getElementById("container3");
+        const step = 100;
+        if (direction == "left") {
+          setCurrentSlide((preveSlibe) => (preveSlibe > 0 ? preveSlibe - 1 : 0));
+        } else {
+          setCurrentSlide((preveSlibe) => (preveSlibe < 3 ? preveSlibe + 1 : 3));
+        }
+        sideScrollJob(container, direction, 25, step, 10);
+      };
 
-  const handleSlide = (direction) => {
-    const container = document.getElementById("container");
-    const step = 100;
-    if (direction == "left") {
-      setCurrentSlide((preveSlibe) => (preveSlibe > 0 ? preveSlibe - 1 : 0));
-    } else {
-      setCurrentSlide((preveSlibe) => (preveSlibe < 3 ? preveSlibe + 1 : 3));
-    }
-    sideScroll(container, direction, 25, step, 10);
-  };
-  const handleSlideIntern = (direction) => {
-    const container = document.getElementById("container2");
-    const step = 100;
-    if (direction == "left") {
-      setCurrentSlide((preveSlibe) => (preveSlibe > 0 ? preveSlibe - 1 : 0));
-    } else {
-      setCurrentSlide((preveSlibe) => (preveSlibe < 3 ? preveSlibe + 1 : 3));
-    }
-    sideScrollIntern(container, direction, 25, step, 10);
-  };
+      const filterInternShips = JobData.filter((item)=>
+        !selectedCategory || item.category === selectedCategory 
+      )
   return (
-    <>
-      <div>
-        <h1 className="text-center text-3xl font-bold">
-          Make your dream career a reality
-        </h1>
-        <p className="text-center text-lg font-bold">
-          Trending on InternArea 🔥
-        </p>
-      </div>
-      <div className="imgs flex justify-center " id="container">
-        <div className="slide flex mt-10 " id="container">
-          <img className="slide_Img ml-4" src={first} alt="" />
-          <img className="slide_Img ml-4" src={second} alt="" />
-          <img className="slide_Img ml-4" src={third} alt="" />
-          <img className="slide_Img ml-4" src={fourth} alt="" />
-        </div>
-      </div>
-
-      <div className="flex BUttons">
-        <button className="back" onClick={() => handleSlide("left")}>
-          {" "}
-          <i className="bi bi-chevron-left" id="sideBack"></i>
-        </button>
-        <button className="next" onClick={() => handleSlide("right")}>
-          {" "}
-          <i className="bi bi-chevron-right" id="slide"></i>
-        </button>
-      </div>
-
-      <div className="infoys">
+    <div>
         <div className="info-intern">
-          <div className="mt-16">
-            <h1 className="text-center font-bold ">
-              Latest internships on Intern area
+          <div className="mt-16 ">
+            <h1 className="text-center font-bold max-h-px ">
+              Latest Jobs on Intern area
             </h1>
           </div>
           <div className="categories flex flex-wrap mt-14 ">
@@ -107,7 +64,7 @@ const Home = () => {
 
           </div>
 
-          <div className="internships" id="container2">
+          <div className="internships" id="container3">
             <div className="InternShip-Info flex">
               {
               filterInternShips.map((index, data) => (
@@ -125,8 +82,8 @@ const Home = () => {
 
                     <p className="mt-3">
                       <i class="bi bi-geo-alt-fill"></i> {data.location}</p>
-                    <p className="mt-1"><i class="bi bi-cash-stack"></i> {data.stipend}</p>
-                    <p className="mt-1"><i class="bi bi-calendar-fill"></i> {data.Duration}</p>
+                    <p className="mt-1"><i class="bi bi-cash-stack"></i> {data.CTC}</p>
+                    <p className="mt-1"><i class="bi bi-calendar-fill"></i> {data.Experience}</p>
 
                     <div className="more flex justify-between mt-6 ">
                       <span className="bg-slate-200 text-slate-400 rounded-sm text-center ">
@@ -144,39 +101,22 @@ const Home = () => {
             
           </div>
           <div className="flex BUttons mt-9 ">
-        <button className="back" onClick={() => handleSlideIntern("left")}>
+        <button className="back" onClick={() => handleJob("left")}>
           <i className="bi bi-chevron-left" id="sideBack"></i>
         </button>
-        <button className="next" onClick={() => handleSlideIntern("right")}>
+        <button className="next" onClick={() => handleJob("right")}>
           {" "}
           <i className="bi bi-chevron-right" id="slide"></i>
         </button>
       </div>
         </div>
       </div>
-      <Job/>
-    </>
-  );
-};
-
-export default Home;
-
-function sideScroll(element, direction, speed, distance, step) {
-  let scrollAmount = 0;
-  const slideTimer = setInterval(function () {
-    if (direction === "left") {
-      element.scrollLeft -= step;
-    } else {
-      element.scrollLeft += step;
-    }
-    scrollAmount += step;
-    if (scrollAmount >= distance) {
-      window.clearInterval(slideTimer);
-    }
-  }, speed);
+  )
 }
 
-function sideScrollIntern(element, direction, speed, distance, step) {
+export default Job
+
+function sideScrollJob(element, direction, speed, distance, step) {
     let scrollAmount = 0;
     const slideTimer = setInterval(function () {
       if (direction === "left") {
@@ -190,4 +130,3 @@ function sideScrollIntern(element, direction, speed, distance, step) {
       }
     }, speed);
   }
-  

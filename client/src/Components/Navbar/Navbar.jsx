@@ -4,6 +4,7 @@ import './navbar.css'
 import Sidebar from "./Sidebar";
 import { signInWithPopup,signOut } from "firebase/auth";
 import { auth,provider } from "../../firebase/Firebase";
+import { BrowserRouter, Link } from "react-router-dom";
 
 function Navbar() {
   const[isDivVisibleForintern,setDivVisibleForIntern] = useState(false)
@@ -29,50 +30,110 @@ function Navbar() {
   const setFalseForStudent=() =>{
     setStudent(false)
   }
-  const showInternships =() =>{
-    document.getElementById("ico").className="bi bi-caret-up-fill"
-      setDivVisibleForIntern(true)
-  }
-  const hideInternships =() =>{
-    document.getElementById("ico").className="bi bi-caret-down-fill"
-    setDivVisibleForIntern(false)
-}
-const showjobs =() =>{
-  document.getElementById("ico2").className="bi bi-caret-up-fill"
-  setDivVisibleForJob(true)
-}
-const hidejobs =() =>{
-  document.getElementById("ico2").className="bi bi-caret-down-fill"
-setDivVisibleForJob(false)
-}
+  const showInternships = () => {
+    document.getElementById("ico").className = "bi bi-caret-up-fill";
+    setDivVisibleForIntern(true);
+  };
+  const hideInternships = () => {
+    document.getElementById("ico").className = "bi bi-caret-down-fill";
+    setDivVisibleForIntern(false);
+  };
+  const showjobs = () => {
+    document.getElementById("ico2").className = "bi bi-caret-up-fill";
+    setDivVisibleForJob(true);
+  };
+  const hidejobs = () => {
+    document.getElementById("ico2").className = "bi bi-caret-down-fill";
+    setDivVisibleForJob(false);
+  };
   const user = 1;
   return (
     <div>
-      <nav className="nav1">
-        <ul>
-          <div className="img">
-            <img src={logo} alt="" />
-          </div>
-          <div className="elem">
-            <p id="int" onMouseEnter={showInternships} >
-              Internship <i onClick={hideInternships} id="ico" class="bi bi-caret-down-fill"></i>
-            </p>
-            <p onMouseEnter={showjobs} >
-              Jobs <i onClick={hidejobs} id="ico2" class="bi bi-caret-down-fill"></i>
-            </p>
-          </div>
-          <div className="search">
-            <i class="bi bi-search"></i>
-            <input type="text" placeholder="Search" />
-          </div>
-          <div className="auth">
-            <button className="log" onClick={showLogin}>Login</button>
-            <button className="regi">Register</button>
-          </div>
-          <div className="flex mt-7 hire">Hire Talent</div>
-          <div className="admin">
-            <button>Admin</button>
-          </div>
+        <nav className="nav1">
+          <ul>
+            <div className="img">
+              <Link to={"/"}>
+                <img src={logo} alt="" srcset="" />
+              </Link>
+            </div>
+            <div className="elem">
+              <Link to={"/Internship"}>
+                {" "}
+                <p id="int" className="" onMouseEnter={showInternships}>
+                  {" "}
+                  Internships{" "}
+                  <i
+                    onClick={hideInternships}
+                    id="ico"
+                    class="bi bi-caret-down-fill"
+                  ></i>
+                </p>
+              </Link>
+              <Link to={"/Jobs"}>
+                {" "}
+                <p onMouseEnter={showjobs}>
+                  Jobs{" "}
+                  <i
+                    class="bi bi-caret-down-fill"
+                    id="ico2"
+                    onClick={hidejobs}
+                  ></i>
+                </p>
+              </Link>
+            </div>
+            <div className="search">
+              <i class="bi bi-search"></i>
+              <input type="text" placeholder="Search" />
+            </div>
+            {user ? (
+            <>
+              {/* <div className="Profile">
+                <Link to={"/profile"}>
+                  <img
+                    src={user?.photo}
+                    alt=""
+                    onMouseEnter={showtheProfile}
+                    className="rounded-full w-12"
+                    id="picpro"
+                  />
+                  <i
+                    className="bi bi-caret-up-fill"
+                    id="ico3"
+                    onClick={hidetheProfile}
+                  ></i>
+                </Link>
+              </div> */}
+            </>
+          ) : (
+            <>
+              <div className="auth">
+                <button className="btn1" onClick={showLogin}>
+                  Login
+                </button>
+
+                <button className="btn2">
+                  <Link to="/register">Register</Link>
+                </button>
+              </div>
+            </>
+          )}
+          {user ? (
+            <>
+              <button className="bt-log" id="bt" onClick="">
+                Logout <i class="bi bi-box-arrow-right"></i>
+              </button>
+            </>
+          ) : (
+            <>
+              <div className="flex mt-7 hire">Hire Talent</div>
+
+              <div className="admin">
+                <Link to={"/adminLogin"}>
+                  <button>Admin</button>{" "}
+                </Link>
+              </div>
+            </>
+          )}
         </ul>
       </nav>
 
