@@ -46,7 +46,7 @@ function Navbar() {
     document.getElementById("ico2").className = "bi bi-caret-down-fill";
     setDivVisibleForJob(false);
   };
-  const user = 1;
+  const user = null;
   return (
     <div>
         <nav className="nav1">
@@ -57,7 +57,7 @@ function Navbar() {
               </Link>
             </div>
             <div className="elem">
-              <Link to={"/Internship"}>
+              <Link to={"/Internships"}>
                 {" "}
                 <p id="int" className="" onMouseEnter={showInternships}>
                   {" "}
@@ -69,7 +69,7 @@ function Navbar() {
                   ></i>
                 </p>
               </Link>
-              <Link to={"/Jobs"}>
+              <Link to={"/Job"}>
                 {" "}
                 <p onMouseEnter={showjobs}>
                   Jobs{" "}
