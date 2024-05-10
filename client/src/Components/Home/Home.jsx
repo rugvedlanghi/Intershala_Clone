@@ -110,7 +110,7 @@ const Home = () => {
           <div className="internships" id="container2">
             <div className="InternShip-Info flex">
               {
-              filterInternShips.map((index, data) => (
+              filterInternShips.map((data, index) => (
                 <>
                   <div className="int-1 mt-6">
                     <p className="mb-4" id="boxer">

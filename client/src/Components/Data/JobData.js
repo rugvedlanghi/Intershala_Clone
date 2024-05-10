@@ -1,6 +1,6 @@
 const JobData = [{
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Mumbai",
     Experience: "0-2",
     category: "Big Brands",
@@ -50,7 +50,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Mumbai",
     Experience: "6-2 Year",
     category: "Big Brands",
@@ -101,7 +101,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Mumbai",
     Experience: "6-2 Year",
     category: "Big Brands",
@@ -152,7 +152,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Mumbai",
     Experience: "6-2 Year",
     category: "Big Brands",
@@ -207,7 +207,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Mumbai",
     Experience: "6-2 Year",
     category: "Big Brands",
@@ -259,7 +259,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 // work From home
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Pune",
     Experience: "6-2 Year",
     category: "Work From Home",
@@ -311,7 +311,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Pune",
     Experience: "6-2 Year",
     category: "Work From Home",
@@ -362,7 +362,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Pune",
     Experience: "6-2 Year",
     category: "Work From Home",
@@ -413,7 +413,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Pune",
     Experience: "6-2 Year",
     category: "Work From Home",
@@ -464,7 +464,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Pune",
     Experience: "6-2 Year",
     category: "Work From Home",
@@ -516,7 +516,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 // Part-time
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Banaras",
     Experience: "6-2 Year",
     category: "Part-time",
@@ -568,7 +568,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Banaras",
     Experience: "6-2 Year",
     category: "Part-time",
@@ -619,7 +619,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Banaras",
     Experience: "6-2 Year",
     category: "Part-time",
@@ -670,7 +670,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Banaras",
     Experience: "6-2 Year",
     category: "Part-time",
@@ -721,7 +721,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Banaras",
     Experience: "6-2 Year",
     category: "Part-time",
@@ -775,7 +775,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 // MBA
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,kashmir",
     Experience: "6-2 Year",
     category: "MBA",
@@ -825,7 +825,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,kashmir",
     Experience: "6-2 Year",
     category: "MBA",
@@ -875,7 +875,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,kashmir",
     Experience: "6-2 Year",
     category: "MBA",
@@ -925,7 +925,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,kashmir",
     Experience: "6-2 Year",
     category: "MBA",
@@ -975,7 +975,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,kashmir",
     Experience: "6-2 Year",
     category: "MBA",
@@ -1027,7 +1027,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 // Engineering
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Gujarat",
     Experience: "6-2 Year",
     category: "Engineering",
@@ -1078,7 +1078,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Gujarat",
     Experience: "6-2 Year",
     category: "Engineering",
@@ -1129,7 +1129,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Gujarat",
     Experience: "6-2 Year",
     category: "Engineering",
@@ -1180,7 +1180,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Gujarat",
     Experience: "6-2 Year",
     category: "Engineering",
@@ -1231,7 +1231,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Gujarat",
     Experience: "6-2 Year",
     category: "Engineering",
@@ -1284,7 +1284,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 // Media
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Jaypur",
     Experience: "6-2 Year",
     category: "media",
@@ -1335,7 +1335,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Jaypur",
     Experience: "6-2 Year",
     category: "media",
@@ -1386,7 +1386,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Jaypur",
     Experience: "6-2 Year",
     category: "media",
@@ -1437,7 +1437,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Jaypur",
     Experience: "6-2 Year",
     category: "media",
@@ -1488,7 +1488,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Jaypur",
     Experience: "6-2 Year",
     category: "media",
@@ -1541,7 +1541,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Lucknow",
     Experience: "6-2 Year",
     category: "Design",
@@ -1591,7 +1591,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Lucknow",
     Experience: "6-2 Year",
     category: "Design",
@@ -1641,7 +1641,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Lucknow",
     Experience: "6-2 Year",
     category: "Design",
@@ -1691,7 +1691,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Lucknow",
     Experience: "6-2 Year",
     category: "Design",
@@ -1741,7 +1741,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 },
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Lucknow",
     Experience: "6-2 Year",
     category: "Design",
@@ -1793,7 +1793,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Jaunpur",
     Experience: "6-2 Year",
     category: "Data Science",
@@ -1844,7 +1844,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Jaunpur",
     Experience: "6-2 Year",
     category: "Data Science",
@@ -1895,7 +1895,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Jaunpur",
     Experience: "6-2 Year",
     category: "Data Science",
@@ -1946,7 +1946,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Jaunpur",
     Experience: "6-2 Year",
     category: "Data Science",
@@ -1997,7 +1997,7 @@ Stipend structure: This is a performance-based internship. In addition to the mi
 
 {
     title: "Job Title",
-    company: "ankitOrg Ltd.",
+    company: "Rugved Ltd.",
     location: "India,Jaunpur",
     Experience: "6-2 Year",
     category: "Data Science",
