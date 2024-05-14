@@ -63,17 +63,14 @@
       position: relative;
       left: -46%;
       width: 697px;
-      height: 300px;
+      height: 225px;
     }
     .head {
-      margin-left: -6rem;
-      width: 20%;
-
+      margin-left: 20px ;
   }
   
   .show2{
     margin-left: -14rem;
-    width: 26%;
   }
     @media screen and (max-width: 768px) {
       .first-int{

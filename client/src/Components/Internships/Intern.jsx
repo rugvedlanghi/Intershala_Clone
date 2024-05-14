@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./inter.css"
-
+import InternShipData from '../Data/InternshipData';
 import compLogo from "../../Assets/internship_logo.png"
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -47,9 +47,9 @@ fetchData();
     setFilterInternship([serachCategory,loactionValue])
   }
   const filterInterships = (category, location) => {
-    if (InternData && InternData.length > 0) {
+    if (InternShipData && InternShipData.length > 0) {
     
-        const filterData = InternData.filter(
+        const filterData = InternShipData.filter(
           (internship) =>
             internship.category.toLowerCase().includes(category.toLowerCase()) &&
             internship.location.toLowerCase().includes(location.toLowerCase())
@@ -103,12 +103,11 @@ console.log(filterInternship)
   </div>
 
   <div className="all-internships">
-    <div className=" show show2 flex justify-center">
-      <p className='filterico text-center' onClick={showDiv}>filter <i class="bi bi-funnel  text-blue-400"></i>   </p>
+    <div className=" show show2 flex justify-between ">
+      <p className='filterico text-center' onClick={showDiv}>Filter<i class="bi bi-funnel  text-blue-400"></i>   </p>
 
+    <p className='data flex head font-bold text-lg '  >{filterInternship.length} Total Internships</p>
     </div>
-    <p className='head font-bold text-lg text-center '  >{filterInternship.length} total internships</p>
-
     { filterInternship.map((data,index)=>(
 
 <div className='shadow-lg rounded-lg bg-white m-7 ' id='display'>
@@ -121,11 +120,16 @@ console.log(filterInternship)
 
 
 <div className='text-lg text-black m-2 mt-7 font-bold'>{data.title}</div>
-<div className="info">
-<p className='text-sm text-slate-300 font-bold'>{data.company}</p>
-<p className=' mt-2'>{data.location}</p>
-</div>
+{/* <div className="info">
+
+
+
+</div> */}
+
 <div className="flex text-sm justify-between">
+{/* <p className='text-sm mt-5 text-slate-300 font-bold '>{data.company}</p> */}
+<p className='mt-5 p-0 mt-4 '>{data.location}</p>
+
   <p className='mt-3'> <i class="bi bi-play-circle-fill"></i>   Start Date  <br />  {data.StartDate}</p>
 
 
@@ -135,11 +139,13 @@ console.log(filterInternship)
   <p className='mt-3'>  <i class="bi bi-cash"></i>   Stipend <br /> {data.stipend}</p>
    </div>
    </div>
-   <span className='bg-slate-200 text-slate-400 w-20 rounded-sm text-center'>Internship</span>
+   <div className='mt-5'>
+   <span className=' ml-1 mt-5 bg-slate-200 text-slate-400 w-20 rounded-sm text-center'>Internship</span>
    <br />
-   <span><i class="bi bi-stopwatch text-green-300"></i>23/11/2065</span>
+   <span><i class="mt-10 bi bi-stopwatch text-green-300"></i>23/12/2024</span>
+   </div>
    <div className="flex justify-end" id='hr'>
-<Link to={`/detailInternship?q=${data._id}`} className='mt-10'><button id='viewButtons' className='bg-transparent text-blue-500'>View In Deatils</button></Link>
+<Link to={`/detailInternship?q=${data._id}`} className='mt-5'><button id='viewButtons' className='bg-transparent text-blue-500'>View In Deatils</button></Link>
    </div>
   </div>
   </div>
