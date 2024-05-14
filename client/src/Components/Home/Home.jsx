@@ -178,17 +178,17 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="logins flex  h-32 mt-8">
-        <div className="cont">
-          <p className="flex justify-center text-white text-xl items-center m-5 w-30">
+      <div className="logins flex h-32 mt-10 ">
+        <div className="cont text-center items-center">
+          <p className="flex text-white text-2xl  m-5 w-30 mt-11 ">
             Empower your career with InternArea today
           </p>
         </div>
-        <div className="log flex">
+        <div className="log flex  ml-10 mt-5 ">
           <a
             href="/register"
             id="buttons"
-            class="flex items-center  bg-white h-9 justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100"
+            class="flex items-center bg-white h-9 justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100"
           >
             <div class="px-4 py-3">
               <svg class="h-6 w-6" viewBox="0 0 40 40">
@@ -210,7 +210,7 @@ const Home = () => {
                 />
               </svg>
             </div>
-            <p class="px-4 py-3 w-5/6 text-center text-sm text-gray-600 font-bold ">
+            <p class=" px-4 py-3 w-4/6 text-center text-sm text-gray-600 font-bold ">
               Sign in with Google
             </p>
           </a>
