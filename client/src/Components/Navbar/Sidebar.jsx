@@ -30,7 +30,7 @@ function Sidebar() {
   const logoutFuction = () => {
 
   }
-  const user = 1;
+  const user = null;
   // const user=1;
   return (
     <>

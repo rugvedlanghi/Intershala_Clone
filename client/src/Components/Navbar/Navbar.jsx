@@ -46,7 +46,7 @@ function Navbar() {
     document.getElementById("ico2").className = "bi bi-caret-down-fill";
     setDivVisibleForJob(false);
   };
-  const user = 1;
+  const user = null;
   return (
     <div>
         <nav className="nav1">

@@ -7,7 +7,7 @@ import JobAvl from "./Components/Job/JobAvl";
 import { Routes,Route } from "react-router-dom";
 import JobDetail from "./Components/Job/JobDetail";
 import InternDetail from "./Components/Internships/InternDetail";
-
+import Register from "./Components/auth/Register";
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
       <Navbar/>
       
       <Routes>
+      <Route path='/register' element={<Register/>}/>
       <Route path="/" element={<Home/>} />
       <Route path="/Internships" element={<Intern/>} />
       <Route path="/Job" element={<JobAvl/>} />
