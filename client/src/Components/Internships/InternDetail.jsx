@@ -1,13 +1,12 @@
 import React from 'react'
-import Jobs from '../Data/JobData'
-import "./job.css"
+import Intern from '../Data/InternshipData'
 
-function JobDetail() {
+function InternDetail() {
   return (
     <div>
         <div className="details-app m-600 text-center ">
         {
-            Jobs.map((data,index)=>(
+            Intern.map((data,index)=>(
                 <>
                 <h1 className="font-bold text-3xl text-center ">{data.title}</h1>
                 <div className=" m-14 shadow-sm rounded-md border ">
@@ -27,12 +26,12 @@ function JobDetail() {
                     </p>
 
                     <p className="mt-3 text-salt-400 ">
-                      <i class="bi bi-calendar-check-fill"></i> Experience <br />
-                      {data.Experience}
+                      <i class="bi bi-calendar-check-fill"></i> Duration <br />
+                      {data.Duration}
                     </p>
 
                     <p className="mt-3 text-slate-400">
-                      <i class="bi bi-cash"></i> Salary <br /> {data.CTC}
+                      <i class="bi bi-cash"></i> Stipend <br /> {data.stipend}
                     </p>
 
                   </div>
@@ -103,4 +102,4 @@ function JobDetail() {
   )
 }
 
-export default JobDetail
+export default InternDetail

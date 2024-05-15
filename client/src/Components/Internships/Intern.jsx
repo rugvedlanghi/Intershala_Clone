@@ -19,20 +19,20 @@ function Intern() {
     setDivVisible(false);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `https://internshipbackend-vwja.onrender.com/api/internship`
-        );
-        setInternData(response.data);
-        console.log(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         `https://internshipbackend-vwja.onrender.com/api/internship`
+  //       );
+  //       setInternData(response.data);
+  //       console.log(response.data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
 
   const handleCategoryChange = (e) => {
     const categeoryValue = e.target.value;

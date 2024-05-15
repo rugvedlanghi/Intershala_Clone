@@ -5,6 +5,8 @@ import Navbar from "./Components/Navbar/Navbar";
 import Intern from "./Components/Internships/Intern";
 import JobAvl from "./Components/Job/JobAvl";
 import { Routes,Route } from "react-router-dom";
+import JobDetail from "./Components/Job/JobDetail";
+import InternDetail from "./Components/Internships/InternDetail";
 
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
       <Route path="/" element={<Home/>} />
       <Route path="/Internships" element={<Intern/>} />
       <Route path="/Job" element={<JobAvl/>} />
+      <Route path="/Job_details" element={<JobDetail/>} />
+      <Route path="/Intern_details" element={<InternDetail/>} />
       </Routes>
       <Footer/>
     </div>
