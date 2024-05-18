@@ -140,6 +140,14 @@ font-weight: 500;
     left: 61%;
     position: absolute;
   }
+  .log_out{
+    /* display: flex; */
+    height: 80px;
+    width: 80px;
+    justify-content: right;
+    margin-top: 4px;
+    margin-left: 850px;
+  }
   .catogry{
     top: 6rem;
     left: 14%;

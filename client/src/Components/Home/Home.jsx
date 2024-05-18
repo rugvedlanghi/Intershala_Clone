@@ -17,13 +17,13 @@ const Home = () => {
 
   const handleSlide = (direction) => {
     const container = document.getElementById("container");
-    const step = 100;
+    const step = 439;
     if (direction == "left") {
       setCurrentSlide((preveSlibe) => (preveSlibe > 0 ? preveSlibe - 1 : 0));
     } else {
       setCurrentSlide((preveSlibe) => (preveSlibe < 3 ? preveSlibe + 1 : 3));
     }
-    sideScroll(container, direction, 25, step, 10);
+    sideScroll(container, direction, 30, step, 20);
   };
   const handleSlideIntern = (direction) => {
     const container = document.getElementById("container2");

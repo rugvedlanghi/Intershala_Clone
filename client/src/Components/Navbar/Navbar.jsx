@@ -4,9 +4,17 @@ import './navbar.css'
 import Sidebar from "./Sidebar";
 import { signInWithPopup,signOut } from "firebase/auth";
 import { auth,provider } from "../../firebase/Firebase";
-import { BrowserRouter, Link } from "react-router-dom";
+import { BrowserRouter, Link, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../Feature/Userslice";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+
+const user= useSelector(selectUser)
+
+  const navigate=useNavigate()
+  const [isDivVisibleForProfile, setDivVisibleProfile] = useState(false);
   const[isDivVisibleForintern,setDivVisibleForIntern] = useState(false)
   const[isDivVisibleForJob,setDivVisibleForJob] = useState(false)
   const[isDivVisibleForlogin,setDivVisibleForLogin] = useState(false)
@@ -20,9 +28,11 @@ function Navbar() {
   const loginFuction = () =>{
     signInWithPopup(auth,provider).then((res)=>{
       console.log(res)
+      
     }).catch((err)=>{
       console.log(err)
     })
+    setDivVisibleForLogin(false)
   }
   const setTrueForStudent = () =>{
     setStudent(true)
@@ -46,7 +56,18 @@ function Navbar() {
     document.getElementById("ico2").className = "bi bi-caret-down-fill";
     setDivVisibleForJob(false);
   };
-  const user = null;
+  const showtheProfile = () => {
+    setDivVisibleProfile(true);
+    document.getElementById("ico3").className = "bi bi-caret-up-fill";
+  };
+  const hidetheProfile = () => {
+    document.getElementById("ico3").className = "bi bi-caret-down-fill";
+    setDivVisibleProfile(false);
+  };
+  const logoutFuction=()=>{
+    signOut(auth)
+    navigate('/')
+  }
   return (
     <div>
         <nav className="nav1">
@@ -87,7 +108,7 @@ function Navbar() {
             </div>
             {user ? (
             <>
-              {/* <div className="Profile">
+              <div className="Profile">
                 <Link to={"/profile"}>
                   <img
                     src={user?.photo}
@@ -102,11 +123,23 @@ function Navbar() {
                     onClick={hidetheProfile}
                   ></i>
                 </Link>
-              </div> */}
+              </div>
             </>
           ) : (
             <>
-              <div className="auth">
+            {
+              user?(
+                <>
+                <div className="profile">
+                  <Link to={'/profile'}>
+                    <img src={user?.photo} alt="" className="rounded-full w-12 " id="picpro"/>
+                    <i className="bi bi-crate-up-fill "></i>
+                  </Link>
+                </div>
+                </>
+              ):(
+                <>
+                <div className="auth">
                 <button className="btn1" onClick={showLogin}>
                   Login
                 </button>
@@ -115,25 +148,30 @@ function Navbar() {
                   <Link to="/register">Register</Link>
                 </button>
               </div>
-            </>
+                </>
+              )
+            }
+            
+           </>
           )}
-          {user ? (
-            <>
-              <button className="bt-log" id="bt" onClick="">
-                Logout <i class="bi bi-box-arrow-right"></i>
-              </button>
-            </>
-          ) : (
-            <>
-              <div className="flex mt-7 hire">Hire Talent</div>
 
-              <div className="admin">
-                <Link to={"/adminLogin"}>
-                  <button>Admin</button>{" "}
-                </Link>
-              </div>
+          {
+            user?(
+            <>
+            <button className="log_out" onClick={logoutFuction}>Logout <i className="bi bi-box-arrow-right"></i></button>
             </>
-          )}
+            ):(
+            <>
+            <div className="flex mt-7 hire ">
+              Hire Talent
+            </div>
+            <div className="admin">
+              <button>Admin</button>
+            </div>
+            </>
+            )
+          }
+        
         </ul>
       </nav>
 

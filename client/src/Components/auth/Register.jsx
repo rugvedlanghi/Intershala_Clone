@@ -3,6 +3,7 @@ import './register.css'
 import { useState } from "react";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../firebase/Firebase";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [isDivVisible, setDivVisible] = useState(false);
@@ -11,11 +12,12 @@ function Register() {
   const [lname, setLname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  let navigate=useNavigate
   const handleSignin = () => {
     signInWithPopup(auth, provider)
       .then((res) => {
         console.log(res);
+        navigate("/")
       })
       .catch((err) => {
         console.log(err);

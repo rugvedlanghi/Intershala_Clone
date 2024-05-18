@@ -165,7 +165,7 @@ function Intern() {
 
                   <div className="flex text-sm justify-between">
                     {/* <p className='text-sm mt-5 text-slate-300 font-bold '>{data.company}</p> */}
-                    <p className="mt-5 p-0 mt-4 ">{data.location}</p>
+                    <p className="mt-5 p-0 ">{data.location}</p>
 
                     <p className="mt-3">
                       {" "}
@@ -196,10 +196,11 @@ function Intern() {
                   </span>
                 </div>
                 <div className="flex justify-end" id="hr">
-                  <Link to={`/Internships`} className="mt-5">
+                  <Link to={`/detailInternship?q=${data._id}`} className="mt-5">
                     <button
                       id="viewButtons"
                       className="bg-transparent text-blue-500"
+
                     >
                       View In Deatils
                     </button>
