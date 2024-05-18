@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {selectUser, login , logout } from "./Feature/Userslice";
 import { useEffect } from "react";
 import { auth } from "./firebase/Firebase";
+import Profile from "./Profile/Profile";
 
 
 function App() {
@@ -36,14 +37,13 @@ function App() {
   const dispatch=useDispatch();
   useEffect(() => {
     auth.onAuthStateChanged((authUser)=>{
+      console.log('Auth user: ',authUser );
       if(authUser){
         dispatch(login({
-  
           uid:authUser.uid,
           photo:authUser.photoURL,
           name:authUser.displayName,
           email:authUser.email,
-          phoneNumber:authUser.phoneNumber
         }))
       }
         else{
@@ -61,6 +61,7 @@ function App() {
       <Route path="/" element={<Home/>} />
       <Route path="/Internships" element={<Intern/>} />
       <Route path="/Job" element={<JobAvl/>} />
+      <Route path="/profile" element={<Profile/>} />
       <Route path="/Job_details" element={<JobDetail/>} />
       <Route path="/Intern_details" element={<InternDetail/>} />
       </Routes>

@@ -8,6 +8,7 @@ import { BrowserRouter, Link, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../Feature/Userslice";
 import { useNavigate } from "react-router-dom";
+import Profile from "../../Profile/Profile";
 
 function Navbar() {
 
