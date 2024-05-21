@@ -1,25 +1,26 @@
-const mangoose = require("mongoose")
-const internshipSchema = new mangoose.Schema({
-
-    title:String,
-    company:String,
-    location:String,
-    Duration:String,
-    category:String,
+const mongoose=require("mongoose")
+ const InternshipSchema=new mongoose.Schema({
+    title: String,
+    company: String,
+    location: String,
+    Duration: String,
+    category: String,
     aboutCompany:String,
     aboutInternship:String,
-    Whocanapply:String,
+    Whocanapply: String,
     perks: Array,
     AdditionalInfo:String,
-    stipend:String,
+    stipend: String,
     StartDate:String,
-
+    
     createAt:{
         type:Date,
         default:Date.now,
     },
-    user:Object,
-    
-})
 
-module.exports=mangoose.model('Internship',internshipSchema)
+   
+   
+ })
+ module.exports=mongoose.model("Internship",InternshipSchema)
+
+

@@ -4,7 +4,7 @@ const app = express();
 const path = require("path");
 const cors = require("cors");
 const {connect} =require("./db")
-// const { connect } = require("http2");
+const router = require("./Routes/index")
 const port = 5000; 
 
 
@@ -16,12 +16,18 @@ app.use(express.json());
 app.get("/", (req, res) => { 
   res.send("Hello This is My backend");
 }); 
-connect();
+app.use("/api/",router)
+
 app.use((req, res, next) => {
-  req.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   next();
 });
+
+connect();
+
+
 app.listen(port, () => {
-  console.log("server is running on port ");
+  console.log(`server is running on port ${port}`);
 });
