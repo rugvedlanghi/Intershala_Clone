@@ -24,10 +24,9 @@ router.post('/', async(req,res)=>{
     }
 });
 
-/*
 router.get("/",async (req,res)=>{
     try {
-        const data=await internship.find();
+        const data=await Internship.find();
         res.json(data) .status(200)
     } catch (error) {
         console.log(err);
@@ -39,7 +38,7 @@ router.get("/",async (req,res)=>{
 router.get("/:id", async (req,res)=>{
     const {id}=req.params;
     try {
-        const data=await internship.findById(id);
+        const data=await Internship.findById(id);
         if (!data) {
 
              res.status(404).json({error:"Internship is not found "})
@@ -50,5 +49,4 @@ router.get("/:id", async (req,res)=>{
         res.status(404).json({error:"Internal server error "})
     }
 })
-*/
 module.exports=router
