@@ -46,7 +46,7 @@ router.get("/:id", async (req,res)=>{
         res.json(data) .status(200)
     } catch (error) {
         console.log(err);
-        res.status(404).json({error:"Internal server error "})
+        res.status(404).json({err:"Internal server error "})
     }
 })
 module.exports=router

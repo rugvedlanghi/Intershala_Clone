@@ -1,12 +1,27 @@
 import React from 'react'
-import { useState } from 'react';
-import JobData from '../Data/JobData'
+import { useState,useEffect } from 'react';
+// import JobData from '../Data/JobData'
+import axios from "axios"
+import { Link } from 'react-router-dom';
 
 const Job = () => {
 
     const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState("Big Brands");
+  const [jobData,setJobData] = useState([]);
 
+  useEffect(()=>{
+    const fetchData=async()=>{
+      try{
+        const response = await axios.get(`http://localhost:5000/api/jobs`)
+        setJobData(response.data)
+      }catch(error){
+        console.log(error);
+      }
+     
+    }
+    fetchData();
+  },[])
     const handleJob = (direction) => {
         const container = document.getElementById("container3");
         const step = 100;
@@ -18,7 +33,7 @@ const Job = () => {
         sideScrollJob(container, direction, 25, step, 10);
       };
 
-      const filterInternShips = JobData.filter((item)=>
+      const filterInternShips = jobData.filter((item)=>
         !selectedCategory || item.category === selectedCategory 
       )
   return (
@@ -89,9 +104,10 @@ const Job = () => {
                       <span className="bg-slate-200 text-slate-400 rounded-sm text-center ">
                         Internship
                       </span>
-                      <span className="text-blue-500 mr-2">
+                      <Link to={`/detailJob?q=${data._id}`}><span className="text-blue-500 mr-2">
                         View details <i class="bi bi-chevron-right"></i>
                       </span>
+                      </Link>
                     </div>
                   </div>
                 </>

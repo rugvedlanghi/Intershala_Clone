@@ -1,17 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState} from "react";
 import "./home.css";
 import first from "../../Assets/Firstslide.png";
 import second from "../../Assets/secondslide.webp";
 import third from "../../Assets/thirdsilde.webp";
 import fourth from "../../Assets/fourthslide.webp";
-import InternShipData from "../Data/InternshipData";
+// import InternShipData from "../Data/InternshipData";
 import Job from "./Job";
+import axios from "axios"
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState("Big Brands");
+  const [internshipData,setInternshipData] = useState([]);
 
-  const filterInternShips = InternShipData.filter((item)=>
+  useEffect(()=>{
+    const fetchData=async()=>{
+      try{
+        const response = await axios.get(`http://localhost:5000/api/internship`)
+        setInternshipData(response.data)
+      }catch(error){
+        console.log(error);
+      }
+     
+    }
+    fetchData();
+  },[])
+
+  const filterInternShips = internshipData.filter((item)=>
     !selectedCategory || item.category === selectedCategory 
   )
 
@@ -132,9 +148,9 @@ const Home = () => {
                       <span className="bg-slate-200 text-slate-400 rounded-sm text-center ">
                         Internship
                       </span>
-                      <span className="text-blue-500 mr-2">
+                      <Link to={`/detailInternship?q=${data._id}`} ><span className="text-blue-500 mr-2">
                         View details <i class="bi bi-chevron-right"></i>
-                      </span>
+                      </span></Link> 
                     </div>
                   </div>
                 </>

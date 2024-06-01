@@ -1,20 +1,46 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Intern from "../Data/InternshipData";
 import { Link } from "react-router-dom";
 import { selectUser } from "../../Feature/Userslice";
 import { useSelector } from "react-redux";
+import axios from "axios";
 import "./detail.css"
 
 function InternDetail() {
   const user = useSelector(selectUser);
   const [isDivVisible, setDivVisible] = useState(false);
   const [textare, setTextare] = useState("");
+  let search = window.location.search;
+  const params = new URLSearchParams(search);
+  const id = params.get("q")
   const show = () => {
     setDivVisible(true);
   };
   const hide = () => {
     setDivVisible(false);
   };
+  const [data,setData] = useState([])
+  useEffect(()=>{
+    const fetchdata = async() =>{
+      const response = await axios.get(`http://localhost:5000/api/internship/${id}`)
+      setData(response.data)
+    }
+    fetchdata();
+  })
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(`http://localhost:5000/api/internship/${id}`);
+  //       setData(response.data);
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, [id]);
+
+
   // const submitApplication= async()=>{
   //   const text=document.getElementById("text")
   //     if (text.value==="") {
@@ -44,7 +70,7 @@ function InternDetail() {
   return (
     <div>
       <div className="details-app m-600 text-center ">
-        {Intern.map((data, index) => (
+       
           <>
             <h1 className="font-bold text-3xl text-center ">{data.title}</h1>
             <div className=" m-14 shadow-sm rounded-md border ">
@@ -144,7 +170,7 @@ function InternDetail() {
               </div>
             </div>
           </>
-        ))}
+      
       </div>
       {isDivVisible && (
         <>

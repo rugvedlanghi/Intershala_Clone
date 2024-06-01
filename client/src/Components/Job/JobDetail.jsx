@@ -2,27 +2,36 @@ import React from 'react'
 import Jobs from '../Data/JobData'
 import "./detail.css"
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { selectUser } from '../../Feature/Userslice';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 
 function JobDetail() {
   const user = useSelector(selectUser);
   const [isDivVisible, setDivVisible] = useState(false);
   const [textare, setTextare] = useState("");
+  let search = window.location.search;
+  const params = new URLSearchParams(search);
+  const id = params.get("q")
   const show = () => {
     setDivVisible(true);
   };
   const hide = () => {
     setDivVisible(false);
   };
-
+  const [data,setData] = useState([])
+  useEffect(()=>{
+    const fetchdata = async() =>{
+      const response = await axios.get(`http://localhost:5000/api/jobs/${id}`)
+      setData(response.data)
+    }
+    fetchdata();
+  })
   return (
     <div>
         <div className="details-app m-600 text-center ">
-        {
-            Jobs.map((data,index)=>(
+        
                 <>
                 <h1 className="font-bold text-3xl text-center ">{data.title}</h1>
                 <div className=" m-14 shadow-sm rounded-md border ">
@@ -108,11 +117,10 @@ function JobDetail() {
                 </div>
                 
                 </>
-            ))
-        }
         
 
         </div>
+
         {isDivVisible && (
         <>
           <div className="application-page">

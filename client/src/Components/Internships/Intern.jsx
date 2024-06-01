@@ -9,8 +9,7 @@ function Intern() {
   const [searchLoaction, setSearchLocation] = useState("");
   const [filterInternship, setFilterInternship] = useState([]);
   const [isDivVisible, setDivVisible] = useState(false);
-
-  const [InternData, setInternData] = useState([]);
+  const [InternData, setInternData] = useState([]); 
 
   const showDiv = () => {
     setDivVisible(true);
@@ -200,7 +199,6 @@ function Intern() {
                     <button
                       id="viewButtons"
                       className="bg-transparent text-blue-500"
-
                     >
                       View In Deatils
                     </button>

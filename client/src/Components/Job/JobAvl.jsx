@@ -9,7 +9,7 @@ function Intern() {
   const [searchLoaction, setSearchLocation] = useState("");
   const [filterJob, setFilterJob] = useState([]);
   const [isDivVisible, setDivVisible] = useState(false);
-
+  const [jobdata,setJobData] = useState([])
   const [InternData, setInternData] = useState([]);
 
   const showDiv = () => {
@@ -19,20 +19,13 @@ function Intern() {
     setDivVisible(false);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `https://Jobbackend-vwja.onrender.com/api/Job`
-        );
-        setInternData(response.data);
-        console.log(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
+  useEffect(()=>{
+    const fetchdata = async() =>{
+      const response = await axios.get(`http://localhost:5000/api/jobs`)
+      setJobData(response.data)
+    }
+    fetchdata();
+  })
 
   const handleCategoryChange = (e) => {
     const categeoryValue = e.target.value;
