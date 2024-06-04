@@ -9,7 +9,23 @@ function Intern() {
   const [searchLoaction, setSearchLocation] = useState("");
   const [filterInternship, setFilterInternship] = useState([]);
   const [isDivVisible, setDivVisible] = useState(false);
-  const [InternData, setInternData] = useState([]); 
+  const [internData, setInternData] = useState([]); 
+
+  let search = window.location.search;
+  const params = new URLSearchParams(search);
+  const id = params.get("q")
+
+  useEffect(()=>{
+    const fetchdata = async() =>{
+      try {
+      const response = await axios.get(`http://localhost:5000/api/internship/${id}`);
+      setInternData(response.data);
+    }catch (error) {
+      console.log(error);
+    }
+    };
+    fetchdata();
+  },[]);
 
   const showDiv = () => {
     setDivVisible(true);

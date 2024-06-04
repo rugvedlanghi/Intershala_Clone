@@ -4,13 +4,18 @@ import JobData from "../Data/JobData";
 import compLogo from "../../Assets/internship_logo.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
+
+
 function Intern() {
-  const [serachCategory, setSearchCategory] = useState("");
-  const [searchLoaction, setSearchLocation] = useState("");
+  const [searchCategory, setSearchCategory] = useState("");
+  const [searchLocation, setSearchLocation] = useState("");
   const [filterJob, setFilterJob] = useState([]);
   const [isDivVisible, setDivVisible] = useState(false);
   const [jobdata,setJobData] = useState([])
   const [InternData, setInternData] = useState([]);
+  let search = window.location.search;
+  const params = new URLSearchParams(search);
+  const id = params.get("q")
 
   const showDiv = () => {
     setDivVisible(true);
@@ -21,22 +26,26 @@ function Intern() {
 
   useEffect(()=>{
     const fetchdata = async() =>{
-      const response = await axios.get(`http://localhost:5000/api/jobs`)
-      setJobData(response.data)
+      try {
+      const response = await axios.get(`http://localhost:5000/api/jobs `);
+      setJobData(response.data);
+    }catch (error) {
+      console.log(error);
     }
+    };
     fetchdata();
-  })
+  },[]);
 
   const handleCategoryChange = (e) => {
     const categeoryValue = e.target.value;
     setSearchCategory(categeoryValue);
-    setFilterJob([categeoryValue, searchLoaction]);
+    setFilterJob([categeoryValue, searchLocation]);
   };
 
   const handleCategoryLocationChange = (e) => {
     const loactionValue = e.target.value;
     setSearchLocation(loactionValue);
-    setFilterJob([serachCategory, loactionValue]);
+    setFilterJob([searchCategory, loactionValue]);
   };
   const filterJobs = (category, location) => {
     if (JobData && JobData.length > 0) {
@@ -49,8 +58,8 @@ function Intern() {
     }
   };
   useEffect(() => {
-    filterJobs(serachCategory, searchLoaction);
-  }, [searchLoaction, serachCategory]);
+    filterJobs(searchCategory, searchLocation);
+  }, [searchLocation, searchCategory]);
   console.log(filterJob);
 
   return (
@@ -67,7 +76,7 @@ function Intern() {
               <input
                 type="text"
                 id="pro"
-                value={serachCategory}
+                value={searchCategory}
                 onChange={handleCategoryChange}
                 className="profile border-2 mr-3 w-full"
                 placeholder="Profile manager"
@@ -76,7 +85,7 @@ function Intern() {
               <input
                 type="text"
                 id="loc"
-                value={searchLoaction}
+                value={searchLocation}
                 onChange={handleCategoryLocationChange}
                 className="location border-2  -ml-8 w-full"
                 placeholder="Mumbai"
@@ -150,14 +159,11 @@ function Intern() {
                   <div className="text-lg text-black m-2 mt-7 font-bold">
                     {data.title}
                   </div>
-                  {/* <div className="info">
+                  
 
-
-
-</div> */}
 
                   <div className="flex text-sm justify-between">
-                    {/* <p className='text-sm mt-5 text-slate-300 font-bold '>{data.company}</p> */}
+                    <p className='text-sm mt-5 text-slate-300 font-bold '>{data.company}</p>
                     <p className="mt-5 p-0 ">{data.location}</p>
 
                     <p className="mt-3">
@@ -189,7 +195,7 @@ function Intern() {
                   </span>
                 </div>
                 <div className="flex justify-end" id="hr">
-                  <Link to={`/Internships`} className="mt-5">
+                  <Link to={`/detailJob?q=${data._id}`} className="mt-5">
                     <button
                       id="viewButtons"
                       className="bg-transparent text-blue-500"
@@ -199,9 +205,7 @@ function Intern() {
                   </Link>
                 </div>
               </div>
-            </div>
-
-          
+            </div>         
 ))}
         </div>
 
@@ -222,7 +226,7 @@ function Intern() {
                   <input
                     type="text"
                     id="pro"
-                    value={serachCategory}
+                    value={searchCategory}
                     onChange={handleCategoryChange}
                     className="profile border-2 mr-3 w-full"
                     placeholder="Profile manager"
@@ -231,7 +235,7 @@ function Intern() {
                   <input
                     type="text"
                     id="loc"
-                    value={searchLoaction}
+                    value={searchLocation}
                     onChange={handleCategoryLocationChange}
                     className="location border-2 mt-10  -ml-8 w-full"
                     placeholder="Mumbai"

@@ -167,7 +167,9 @@ const user= useSelector(selectUser)
               Hire Talent
             </div>
             <div className="admin">
+              <Link to={"/adminLogin"} >
               <button>Admin</button>
+              </Link>
             </div>
             </>
             )

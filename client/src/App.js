@@ -13,7 +13,10 @@ import {selectUser, login , logout } from "./Feature/Userslice";
 import { useEffect } from "react";
 import { auth } from "./firebase/Firebase";
 import Profile from "./Profile/Profile";
-
+import AdminLogin from "./Admin/AdminLogin"
+import Adminpanel from "./Admin/Adminpanel"
+import Postinternships from "./Admin/Postinternships"
+import PostJob from "./Admin/PostJob";
 
 function App() {
   // const user=useSelector(selectUser);
@@ -64,6 +67,10 @@ function App() {
       <Route path="/profile" element={<Profile/>} />
       <Route path="/detailJob" element={<JobDetail/>} />
       <Route path="/detailInternship" element={<InternDetail/>} />
+      <Route path="/adminLogin" element={<AdminLogin/>} />
+      <Route path="/adminpanel" element={<Adminpanel/>} />
+      <Route path="/postInternship" element={<Postinternships/>} />
+      <Route path="/postJob" element={<PostJob/>} />
       </Routes>
       <Footer/>
     </div>
