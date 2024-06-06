@@ -9,23 +9,66 @@ function Intern() {
   const [searchLoaction, setSearchLocation] = useState("");
   const [filterInternship, setFilterInternship] = useState([]);
   const [isDivVisible, setDivVisible] = useState(false);
-  const [internData, setInternData] = useState([]); 
+  // const [internData, setInternData] = useState([]); 
 
-  let search = window.location.search;
-  const params = new URLSearchParams(search);
-  const id = params.get("q")
+  // let search = window.location.search;
+  // const params = new URLSearchParams(search);
+  // const id = params.get("q")
 
-  useEffect(()=>{
-    const fetchdata = async() =>{
+  
+
+  // useEffect(()=>{
+  //   const fetchData= async ()=>{
+  //     try{
+  //       const response = await axios.get(`http://localhost:5000/api/internship`)
+  //       setInternshipData(response.data)
+  //     }catch(error){
+  //       console.log(error);
+  //     }
+     
+  //   }
+  //   fetchData();
+  // },[])
+
+  const [internshipData,setInternshipData] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("Big Brands");
+  
+  useEffect(() => {
+    const fetchData = async () => {
       try {
-      const response = await axios.get(`http://localhost:5000/api/internship/${id}`);
-      setInternData(response.data);
-    }catch (error) {
-      console.log(error);
-    }
+        const response = await fetch('http://localhost:5000/api/internship');
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+        }
+        const data = await response.json();
+        setInternshipData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
     };
-    fetchdata();
-  },[]);
+    fetchData();
+  }, []);
+
+  const filterinternships = internshipData.filter((item)=>
+    !selectedCategory || item.category === selectedCategory 
+  )
+
+  // const [internshipData,setInternshipData] = useState([]);
+
+  // useEffect(()=>{
+  //   const fetchData=async()=>{
+  //     try{
+  //       const response = await fetch(`http://localhost:5000/api/internship`);
+  //       setInternshipData(response.data);
+  //       console.log(response.data);
+  //     }catch(error){
+  //       console.log(error);
+  //     }
+     
+  //   };
+  //   fetchData();
+  // },[]);
+
 
   const showDiv = () => {
     setDivVisible(true);
@@ -62,6 +105,7 @@ function Intern() {
   };
   const filterInterships = (category, location) => {
     if (InternShipData && InternShipData.length > 0) {
+      
       const filterData = InternShipData.filter(
         (internship) =>
           internship.category.toLowerCase().includes(category.toLowerCase()) &&
@@ -76,6 +120,7 @@ function Intern() {
   console.log(filterInternship);
 
   return (
+
     <>
       <div className="flex internship-filter">
         <div className="first-int mb-14">
@@ -157,7 +202,9 @@ function Intern() {
               {filterInternship.length} Total Internships
             </p>
           </div>
-          {filterInternship.map((data, index) => (
+
+          {
+          filterinternships.map((data, index) => (
             <div className="shadow-lg rounded-lg bg-white m-7 " id="display">
               <div className="m-4">
                 <p className="mb-4 mt-3" id="boxer">
@@ -224,7 +271,7 @@ function Intern() {
             </div>
 
           
-))}
+ ))} 
         </div>
 
 
@@ -306,6 +353,7 @@ function Intern() {
         )}
       </div>
     </>
+
   );
 }
 

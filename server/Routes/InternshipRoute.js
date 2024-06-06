@@ -43,7 +43,7 @@ router.get("/:id", async (req,res)=>{
 
              res.status(404).json({error:"Internship is not found "})
         }
-        res.json(data) .status(200)
+        res.json(data).status(200)
     } catch (error) {
         console.log(err);
         res.status(404).json({err:"Internal server error "})

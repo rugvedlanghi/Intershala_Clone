@@ -13,6 +13,7 @@ function Intern() {
   const [isDivVisible, setDivVisible] = useState(false);
   const [jobdata,setJobData] = useState([])
   const [InternData, setInternData] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("Big Brands");
   let search = window.location.search;
   const params = new URLSearchParams(search);
   const id = params.get("q")
@@ -24,17 +25,27 @@ function Intern() {
     setDivVisible(false);
   };
 
-  useEffect(()=>{
-    const fetchdata = async() =>{
+  useEffect(() => {
+    const fetchData = async () => {
       try {
-      const response = await axios.get(`http://localhost:5000/api/jobs `);
-      setJobData(response.data);
-    }catch (error) {
-      console.log(error);
-    }
+        const response = await fetch('http://localhost:5000/api/jobs');
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+        }
+        const data = await response.json();
+        setJobData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
     };
-    fetchdata();
-  },[]);
+    fetchData();
+  }, []);
+
+  const filterjob = jobdata.filter((item)=>
+    !selectedCategory || item.category === selectedCategory 
+  )
+
+  
 
   const handleCategoryChange = (e) => {
     const categeoryValue = e.target.value;
@@ -48,14 +59,13 @@ function Intern() {
     setFilterJob([searchCategory, loactionValue]);
   };
   const filterJobs = (category, location) => {
-    if (JobData && JobData.length > 0) {
       const filterData = JobData.filter(
         (Job) =>
           Job.category.toLowerCase().includes(category.toLowerCase()) &&
           Job.location.toLowerCase().includes(location.toLowerCase())
       );
       setFilterJob(filterData);
-    }
+    
   };
   useEffect(() => {
     filterJobs(searchCategory, searchLocation);
@@ -144,7 +154,7 @@ function Intern() {
               {filterJob.length} Total Jobs
             </p>
           </div>
-          {filterJob.map((data, index) => (
+          {filterjob.map((data, index) => (
             <div className="shadow-lg rounded-lg bg-white m-7 " id="display">
               <div className="m-4">
                 <p className="mb-4 mt-3" id="boxer">
