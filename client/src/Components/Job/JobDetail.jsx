@@ -4,13 +4,17 @@ import "./detail.css"
 import { useSelector } from 'react-redux';
 import { useState,useEffect } from 'react';
 import { selectUser } from '../../Feature/Userslice';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function JobDetail() {
   const user = useSelector(selectUser);
   const [isDivVisible, setDivVisible] = useState(false);
   const [textare, setTextare] = useState("");
+  const [company,setCompany] = useState("");
+  const [category,setCategory] = useState("");
+  const navigate = useNavigate();
+
   let search = window.location.search;
   const params = new URLSearchParams(search);
   const id = params.get("q")
@@ -24,10 +28,37 @@ function JobDetail() {
   useEffect(()=>{
     const fetchdata = async() =>{
       const response = await axios.get(`http://localhost:5000/api/jobs/${id}`)
+
+      const {company,category} = response.data;
+      setCompany(company)
+      setCategory(category)   
       setData(response.data)
     }
     fetchdata();
   })
+
+  const submitApplication= async ()=>{
+    let text = document.getElementById("text")
+    if(text.value==""){
+      alert("Fill the mandatory fields")
+    }else{
+      const bodyJson={
+        coverLetter:textare,
+        Category:category,
+        company:company,
+        user:user,
+        Application:id
+      }
+      await axios.post(`http://localhost:5000/api/application`,bodyJson).then((res=>{
+        console.log("Submitted")
+        
+      })).catch((err)=>{
+        alert("Error Happened")
+      })
+      alert("Done")
+      navigate("/Jobs")
+    }
+  }
   return (
     <div>
         <div className="details-app m-600 text-center ">
@@ -128,9 +159,9 @@ function JobDetail() {
               <button className="close2" onClick={hide}>
                 <i className=" bi-bi-x">Close</i>
               </button>
-              <p>Applying for Company Name</p>
-              <p className="mt-3 text-xl font-bold text-start mb-3 ">
-                About company Name
+              <p>Applying for {data.company}</p>
+              <p className="mt-3 text-sm font-bold text-start mb-3 ">
+               {data.aboutCompany}
               </p>
             </div>
             <div className="moreSteps">
@@ -144,7 +175,7 @@ function JobDetail() {
               <textarea
                 name="coverLetter"
                 placeholder=""
-                id="textare"
+                id="text"
                 value={textare}
                 onChange={(e) => setTextare(e.target.value)}
               ></textarea>
@@ -199,7 +230,7 @@ function JobDetail() {
 
             <div className="submit flex justify-center">
               {user ? (
-                <button className="submit-btn" >
+                <button className="submit-btn"  onClick={submitApplication} >
                   Submit application
                 </button>
               ) : (

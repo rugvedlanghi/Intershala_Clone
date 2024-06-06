@@ -14,6 +14,7 @@ function Intern() {
   const [jobdata,setJobData] = useState([])
   const [InternData, setInternData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("Big Brands");
+  
   let search = window.location.search;
   const params = new URLSearchParams(search);
   const id = params.get("q")

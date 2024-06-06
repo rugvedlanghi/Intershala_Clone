@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Intern from "../Data/InternshipData";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { selectUser } from "../../Feature/Userslice";
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -10,6 +10,11 @@ function InternDetail() {
   const user = useSelector(selectUser);
   const [isDivVisible, setDivVisible] = useState(false);
   const [textare, setTextare] = useState("");
+  const [company,setCompany] = useState("");
+  const [category,setCategory] = useState("");
+
+  const navigate=useNavigate();
+
   let search = window.location.search;
   const params = new URLSearchParams(search);
   const id = params.get("q")
@@ -23,6 +28,10 @@ function InternDetail() {
   useEffect(()=>{
     const fetchdata = async() =>{
       const response = await axios.get(`http://localhost:5000/api/internship/${id}`)
+      
+      const {company,category} = response.data;
+      setCompany(company)
+      setCategory(category) 
       setData(response.data)
     }
     fetchdata();
@@ -41,32 +50,30 @@ function InternDetail() {
   // }, [id]);
 
 
-  // const submitApplication= async()=>{
-  //   const text=document.getElementById("text")
-  //     if (text.value==="") {
-  //       alert("Fill the mendetory fildes")
-  //     }
-  //     else{
-  //       const bodyJson={
-  //         coverLetter:textare,
-  //         category:category,
-  //         company :company,
-  //         user:user,
-  //         Application:id
-  //       }
-      
-  //       await axios.post("https://internshipbackend-vwja.onrender.com/api/application",bodyJson).then((res)=>{
-    
-    
-          
-  //       }).catch((err)=>{
-  //         alert("error happend")
-  //       })
-  //       alert("Done")
-  //       navigate("/Jobs")
-  //     }
-  //   };
+  
 
+  const submitApplication= async ()=>{
+    let text = document.getElementById("text")
+    if(text.value==""){
+      alert("Fill the mandatory fields")
+    }else{
+      const bodyJson={
+        coverLetter:textare,
+        Category:category,
+        company:company,
+        user:user,
+        Application:id
+      }
+      await axios.post(`http://localhost:5000/api/application`,bodyJson).then((res=>{
+        console.log("Submitted")
+        
+      })).catch((err)=>{
+        alert("Error Happened")
+      })
+      alert("Done")
+      navigate("/Jobs")
+    }
+  }
   return (
     <div>
       <div className="details-app m-600 text-center ">
@@ -179,9 +186,9 @@ function InternDetail() {
               <button className="close2" onClick={hide}>
                 <i className=" bi-bi-x">Close</i>
               </button>
-              <p>Applying for Company Name</p>
-              <p className="mt-3 text-xl font-bold text-start mb-3 ">
-                About company Name
+              <p>Applying for {data.company}</p>
+              <p className="mt-3 text-sm font-bold text-start mb-3 ">
+                {data.aboutCompany}
               </p>
             </div>
             <div className="moreSteps">
@@ -195,7 +202,7 @@ function InternDetail() {
               <textarea
                 name="coverLetter"
                 placeholder=""
-                id="textare"
+                id="text"
                 value={textare}
                 onChange={(e) => setTextare(e.target.value)}
               ></textarea>
@@ -250,7 +257,7 @@ function InternDetail() {
 
             <div className="submit flex justify-center">
               {user ? (
-                <button className="submit-btn" >
+                <button className="submit-btn" onClick={submitApplication} >
                   Submit application
                 </button>
               ) : (

@@ -17,6 +17,8 @@ import AdminLogin from "./Admin/AdminLogin"
 import Adminpanel from "./Admin/Adminpanel"
 import Postinternships from "./Admin/Postinternships"
 import PostJob from "./Admin/PostJob";
+import ViewAllApplication from "./Admin/ViewAllApplication"
+import DetailApplication from "./Applications/DetailApplication";
 
 function App() {
   // const user=useSelector(selectUser);
@@ -40,7 +42,6 @@ function App() {
   const dispatch=useDispatch();
   useEffect(() => {
     auth.onAuthStateChanged((authUser)=>{
-      console.log('Auth user: ',authUser );
       if(authUser){
         dispatch(login({
           uid:authUser.uid,
@@ -71,6 +72,8 @@ function App() {
       <Route path="/adminpanel" element={<Adminpanel/>} />
       <Route path="/postInternship" element={<Postinternships/>} />
       <Route path="/postJob" element={<PostJob/>} />
+      <Route path="/applications" element={<ViewAllApplication/>} />
+      <Route path="/detailApplication" element={<DetailApplication/>} />
       </Routes>
       <Footer/>
     </div>
